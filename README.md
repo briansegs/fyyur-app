@@ -5,26 +5,26 @@ Fyyur
 
 Fyyur is a musical venue and artist booking site that facilitates the discovery and bookings of shows between local performing artists and venues. This site lets you list new artists and venues, discover them, and list shows with artists as a venue owner.
 
-Your job is to build out the data models to power the API endpoints for the Fyyur site by connecting to a PostgreSQL database for storing, querying, and creating information about artists and venues on Fyyur.
+For this project I built out the data models to power the API endpoints for the Fyyur site by connecting to a PostgreSQL database for storing, querying, and creating information about artists and venues on Fyyur.
 
 ## Overview
 
-This app is nearly complete. It is only missing one thing… real data! While the views and controllers are defined in this application, it is missing models and model interactions to be able to store retrieve, and update data from a database. By the end of this project, you should have a fully functioning site that is at least capable of doing the following, if not more, using a PostgreSQL database:
+This app is a fully functioning site that is capable of doing the following using a PostgreSQL database:
 
 * creating new venues, artists, and creating new shows.
 * searching for venues and artists.
 * learning more about a specific artist or venue.
 
-We want Fyyur to be the next new platform that artists and musical venues can use to find each other, and discover new music shows. Let's make that happen!
+Fyyur is the next new platform that artists and musical venues can use to find each other, and discover new music shows!
 
 ## Tech Stack (Dependencies)
 
 ### 1. Backend Dependencies
 Our tech stack will include the following:
- * **virtualenv** as a tool to create isolated Python environments
- * **SQLAlchemy ORM** to be our ORM library of choice
- * **PostgreSQL** as our database of choice
- * **Python3** and **Flask** as our server language and server framework
+ * **virtualenv** A tool to create isolated Python environments
+ * **SQLAlchemy ORM** My ORM library of choice
+ * **PostgreSQL** Database of choice
+ * **Python3** and **Flask** Server language and server framework
  * **Flask-Migrate** for creating and running schema migrations
 You can download and install the dependencies mentioned above using `pip` as:
 ```
@@ -34,10 +34,10 @@ pip install postgres
 pip install Flask
 pip install Flask-Migrate
 ```
-> **Note** - If we do not mention the specific version of a package, then the default latest stable package will be installed. 
+> **Note** - If I do not mention the specific version of a package, then the default latest stable package will be installed.
 
 ### 2. Frontend Dependencies
-You must have the **HTML**, **CSS**, and **Javascript** with [Bootstrap 3](https://getbootstrap.com/docs/3.4/customize/) for our website's frontend. Bootstrap can only be installed by Node Package Manager (NPM). Therefore, if not already, download and install the [Node.js](https://nodejs.org/en/download/). Windows users must run the executable as an Administrator, and restart the computer after installation. After successfully installing the Node, verify the installation as shown below.
+You must have the **HTML**, **CSS**, and **Javascript** with [Bootstrap 3](https://getbootstrap.com/docs/3.4/customize/) for my website's frontend. Bootstrap can only be installed by Node Package Manager (NPM). Therefore, if not already, download and install the [Node.js](https://nodejs.org/en/download/). Windows users must run the executable as an Administrator, and restart the computer after installation. After successfully installing the Node, verify the installation as shown below.
 ```
 node -v
 npm -v
@@ -53,14 +53,15 @@ npm install bootstrap@3
 
   ```sh
   ├── README.md
-  ├── app.py *** the main driver of the app. Includes your SQLAlchemy models.
+  ├── app.py *** the main driver of the app. Includes my SQLAlchemy models.
                     "python app.py" to run after installing dependences
   ├── config.py *** Database URLs, CSRF generation, etc
   ├── error.log
-  ├── forms.py *** Your forms
-  ├── requirements.txt *** The dependencies we need to install with "pip3 install -r requirements.txt"
+  ├── forms.py *** My forms
+  ├── requirements.txt *** The dependencies you need to install with "pip3 install -r requirements.txt"
+  ├── models.py
   ├── static
-  │   ├── css 
+  │   ├── css
   │   ├── font
   │   ├── ico
   │   ├── img
@@ -104,23 +105,6 @@ Instructions
   6. Serve venue and artist detail pages, powering the `<venue|artist>/<id>` endpoints that power the detail pages.
 
 
-Acceptance Criteria
------
-
-1. The web app should be successfully connected to a PostgreSQL database. A local connection to a database on your local computer is fine.
-2. There should be no use of mock data throughout the app. The data structure of the mock data per controller should be kept unmodified when satisfied by real data.
-3. The application should behave just as before with mock data, but now uses real data from a real backend server, with real search functionality. For example:
-  * when a user submits a new artist record, the user should be able to see it populate in /artists, as well as search for the artist by name and have the search return results.
-  * I should be able to go to the URL `/artist/<artist-id>` to visit a particular artist’s page using a unique ID per artist, and see real data about that particular artist.
-  * Venues should continue to be displayed in groups by city and state.
-  * Search should be allowed to be partial string matching and case-insensitive.
-  * Past shows versus Upcoming shows should be distinguished in Venue and Artist pages.
-  * A user should be able to click on the venue for an upcoming show in the Artist's page, and on that Venue's page, see the same show in the Venue Page's upcoming shows section.
-4. As a fellow developer on this application, I should be able to run `flask db migrate`, and have my local database (once set up and created) be populated with the right tables to run this application and have it interact with my local postgres server, serving the application's needs completely with real data I can seed my local database with.
-  * The models should be completed (see TODOs in the `Models` section of `app.py`) and model the objects used throughout Fyyur.
-  * The right _type_ of relationship and parent-child dynamics between models should be accurately identified and fit the needs of this particular application.
-  * The relationship between the models should be accurately configured, and referential integrity amongst the models should be preserved.
-  * `flask db migrate` should work, and populate my local postgres database with properly configured tables for this application's objects, including proper columns, column data types, constraints, defaults, and relationships that completely satisfy the needs of this application. The proper type of relationship between venues, artists, and shows should be configured.
 
 ##### Stand Out
 
@@ -137,19 +121,19 @@ Best of luck in your final project! Fyyur depends on you!
 1. **Download the project starter code locally**
 ```
 git clone https://github.com/udacity/FSND.git
-cd FSND/projects/01_fyyur/starter_code 
+cd FSND/projects/01_fyyur/starter_code
 ```
 
 2. **Create an empty repository in your Github account online. To change the remote repository path in your local repository, use the commands below:**
 ```
-git remote -v 
-git remote remove origin 
+git remote -v
+git remote remove origin
 git remote add origin <https://github.com/<USERNAME>/<REPO_NAME>.git>
 git branch -M master
 ```
 Once you have finished editing your code, you can push the local repository to your Github account using the following commands.
 ```
-git add . --all   
+git add . --all
 git commit -m "your comment"
 git push -u origin master
 ```
@@ -177,5 +161,5 @@ python3 app.py
 ```
 
 6. **Verify on the Browser**<br>
-Navigate to project homepage [http://127.0.0.1:5000/](http://127.0.0.1:5000/) or [http://localhost:5000](http://localhost:5000) 
+Navigate to project homepage [http://127.0.0.1:5000/](http://127.0.0.1:5000/) or [http://localhost:5000](http://localhost:5000)
 
