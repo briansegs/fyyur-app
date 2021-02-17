@@ -1,6 +1,3 @@
-#----------------------------------------------------------------------------#
-# Imports.
-#----------------------------------------------------------------------------#
 import os
 import json
 import dateutil.parser
@@ -34,14 +31,8 @@ from models import(
 )
 from flask_cors import CORS
 
-#----------------------------------------------------------------------------#
+
 # App Config.
-#----------------------------------------------------------------------------#
-
-
-
-
-
 
 def create_app(test_congig=None):
     app = Flask(__name__)
@@ -49,17 +40,14 @@ def create_app(test_congig=None):
     setup_db(app)
 
 
-    #----------------------------------------------------------------------------#
-    # Controllers.
-    #----------------------------------------------------------------------------#
+    # Controllers
 
     @app.route('/')
     def index():
         return render_template('pages/home.html')
 
 
-    #  Venues
-    #  ----------------------------------------------------------------
+    # Venues
 
     @app.route('/venues')
     def venues():
@@ -122,8 +110,7 @@ def create_app(test_congig=None):
         data['upcoming_shows_count'] = len(upcomingshows)
         return render_template('pages/show_venue.html', venue=data)
 
-    #  Create Venue
-    #  ----------------------------------------------------------------
+    # Create Venue
 
     @app.route('/venues/create', methods=['GET'])
     def create_venue_form():
@@ -174,8 +161,8 @@ def create_app(test_congig=None):
             db.session.close()
             return jsonify({'success': True})
 
-    #  Artists
-    #  ----------------------------------------------------------------
+    # Artists
+
     @app.route('/artists')
     def artists():
     # replaces with real data returned from querying the database
@@ -233,8 +220,8 @@ def create_app(test_congig=None):
         data['upcoming_shows_count'] = len(upcomingshows)
         return render_template('pages/show_artist.html', artist=data)
 
-    #  Update
-    #  ----------------------------------------------------------------
+    # Update
+
     @app.route('/artists/<int:artist_id>/edit', methods=['GET'])
     def edit_artist(artist_id):
     # populates form with fields from artist with ID <artist_id>
@@ -301,8 +288,7 @@ def create_app(test_congig=None):
             db.session.close()
         return redirect(url_for('show_venue', venue_id=venue_id))
 
-    #  Create Artist
-    #  ----------------------------------------------------------------
+    # Create Artist
 
     @app.route('/artists/create', methods=['GET'])
     def create_artist_form():
@@ -352,8 +338,7 @@ def create_app(test_congig=None):
             db.session.close()
             return jsonify({'success': True})
 
-    #  Shows
-    #  ----------------------------------------------------------------
+    # Shows
 
     @app.route('/shows')
     def shows():
@@ -424,9 +409,7 @@ def create_app(test_congig=None):
 
 app = create_app()
 
-#----------------------------------------------------------------------------#
-# Launch.
-#----------------------------------------------------------------------------#
+# Launch
 
 # Default port:
 if __name__ == '__main__':
