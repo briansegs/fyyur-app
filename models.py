@@ -1,14 +1,47 @@
+import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask import Flask
+from flask_moment import Moment
+
+database_path = os.environ['DATABASE_URL']
+
+db = SQLAlchemy()
+
+
 
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
 
-app = Flask(__name__)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+'''
+setup_db(app)
+    binds a flask application and a SQLAlchemy service
+'''
+
+
+def setup_db(app, database_path=database_path):
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_path
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    db.app = app
+    db.init_app(app)
+    moment = Moment(app)
+    app.config.from_object('config')
+    db.create_all()
+
+#----------------------------------------------------------------------------#
+# Filters.
+#----------------------------------------------------------------------------#
+
+    def format_datetime(value, format='medium'):
+        date = dateutil.parser.parse(value)
+        if format == 'full':
+            format="EEEE MMMM, d, y 'at' h:mma"
+        elif format == 'medium':
+            format="EE MM, dd, y h:mma"
+        return babel.dates.format_datetime(date, format)
+
+        app.jinja_env.filters['datetime'] = format_datetime
 
 #----------------------------------------------------------------------------#
 # Models.
