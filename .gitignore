@@ -2,6 +2,7 @@ env/
 .vscode/
 __pycache__/
 db-info-insert.py
+setup.sh
 
 # OS generated files #
 ######################
