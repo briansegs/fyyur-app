@@ -1,4 +1,4 @@
-Fyyur
+# Fyyur
 -----
 
 ## Introduction
@@ -54,7 +54,7 @@ npm install bootstrap@3
   ```sh
   ├── README.md
   ├── app.py *** the main driver of the app. Includes my SQLAlchemy models.
-                    "python app.py" to run after installing dependences
+                    "python3 app.py" to run after installing dependences
   ├── config.py *** Database URLs, CSRF generation, etc
   ├── error.log
   ├── forms.py *** My forms
@@ -74,54 +74,48 @@ npm install bootstrap@3
   ```
 
 Overall:
-* Models are located in the `MODELS` section of `app.py`.
+* Models are located in `models.py`.
 * Controllers are also located in `app.py`.
 * The web frontend is located in `templates/`, which builds static assets deployed to the web server at `static/`.
 * Web forms for creating data are located in `form.py`
 
 
 Highlight folders:
-* `templates/pages` -- (Already complete.) Defines the pages that are rendered to the site. These templates render views based on data passed into the template’s view, in the controllers defined in `app.py`. These pages successfully represent the data to the user, and are already defined for you.
-* `templates/layouts` -- (Already complete.) Defines the layout that a page can be contained in to define footer and header code for a given page.
-* `templates/forms` -- (Already complete.) Defines the forms used to create new artists, shows, and venues.
-* `app.py` -- (Missing functionality.) Defines routes that match the user’s URL, and controllers which handle data and renders views to the user. This is the main file you will be working on to connect to and manipulate the database and render views with data to the user, based on the URL.
-* Models in `app.py` -- (Missing functionality.) Defines the data models that set up the database tables.
-* `config.py` -- (Missing functionality.) Stores configuration variables and instructions, separate from the main application code. This is where you will need to connect to the database.
+* `templates/pages` -- Defines the pages that are rendered to the site. These templates render views based on data passed into the template’s view, in the controllers defined in `app.py`. These pages successfully represent the data to the user.
+* `templates/layouts` -- Defines the layout that a page can be contained in to define footer and header code for a given page.
+* `templates/forms` -- Defines the forms used to create new artists, shows, and venues.
+* `app.py` -- Defines routes that match the user’s URL, and controllers which handle data and renders views to the user.
+* `models.py` -- Defines the data models that set up the database tables.
+* `config.py` -- Stores configuration variables and instructions, separate from the main application code.
 
 
 Instructions
 -----
 
-1. Understand the Project Structure (explained above) and where important files are located.
-2. Build and run local development following the Development Setup steps below.
-3. Fill in the missing functionality in this application: this application currently pulls in fake data, and needs to now connect to a real database and talk to a real backend.
-3. Fill out every `TODO` section throughout the codebase. We suggest going in order of the following:
+* Built and ran local development.
 
-  1. Connect to a database in `config.py`. A project submission that uses a local database connection is fine.
-  2. Using SQLAlchemy, set up normalized models for the objects we support in our web app in the Models section of `app.py`. Check out the sample pages provided at /artists/1, /venues/1, and /shows/1 for examples of the data we want to model, using all of the learned best practices in database schema design. Implement missing model properties and relationships using database migrations via Flask-Migrate.
-  3. Implement form submissions for creating new Venues, Artists, and Shows. There should be proper constraints, powering the `/create` endpoints that serve the create form templates, to avoid duplicate or nonsensical form submissions. Submitting a form should create proper new records in the database.
-  4. Implement the controllers for listing venues, artists, and shows. Note the structure of the mock data used. We want to keep the structure of the mock data.
-  5. Implement search, powering the `/search` endpoints that serve the application's search functionalities.
-  6. Serve venue and artist detail pages, powering the `<venue|artist>/<id>` endpoints that power the detail pages.
+  1. Connected to a database in `config.py`.
+  2. Using SQLAlchemy, I set up normalized models for the objects supported in my web app in `models.py`.
+  3. Implemented form submissions for creating new Venues, Artists, and Shows. There are proper constraints, powering the `/create` endpoints that serve the create form templates.
+  4. Implemented the controllers for listing venues, artists, and shows.
+  5. Implemented search, powering the `/search` endpoints that serve the application's search functionalities.
+  6. Served venue and artist detail pages, powering the `<venue|artist>/<id>` endpoints that power the detail pages.
 
 
 
-##### Stand Out
+##### Wishlist For later
 
-Looking to go above and beyond? This is the right section for you! Here are some challenges to make your submission stand out:
+Here are some things I would like to add in the future:
 
 *  Implement artist availability. An artist can list available times that they can be booked. Restrict venues from being able to create shows with artists during a show time that is outside of their availability.
 * Show Recent Listed Artists and Recently Listed Venues on the homepage, returning results for Artists and Venues sorting by newly created. Limit to the 10 most recently listed items.
 * Implement Search Artists by City and State, and Search Venues by City and State. Searching by "San Francisco, CA" should return all artists or venues in San Francisco, CA.
 
-Best of luck in your final project! Fyyur depends on you!
-
 
 ## Development Setup
 1. **Download the project starter code locally**
 ```
-git clone https://github.com/udacity/FSND.git
-cd FSND/projects/01_fyyur/starter_code
+git clone https://github.com/briansegs/fyyur-app
 ```
 
 2. **Create an empty repository in your Github account online. To change the remote repository path in your local repository, use the commands below:**
