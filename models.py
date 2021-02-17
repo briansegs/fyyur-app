@@ -50,6 +50,24 @@ class Venue(db.Model):
     seeking_description = db.Column(db.String)
     image_link = db.Column(db.String)
 
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def rollback(self):
+        db.session.rollback()
+
+    def close(self):
+        db.session.close()
+
+
 class Artist(db.Model):
     __tablename__ = 'artist'
 
@@ -66,6 +84,24 @@ class Artist(db.Model):
     seeking_description = db.Column(db.String)
     shows = db.relationship('Show', backref='artist', lazy=True, cascade="all, delete")
 
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def rollback(self):
+        db.session.rollback()
+
+    def close(self):
+        db.session.close()
+
+
 class Show(db.Model):
     __tablename__ = 'show'
 
@@ -73,3 +109,14 @@ class Show(db.Model):
     venue_id = db.Column(db.Integer, db.ForeignKey('venue.id'), nullable = False)
     artist_id = db.Column(db.Integer, db.ForeignKey('artist.id'), nullable = False)
     start_time = db.Column(db.DateTime, nullable = False)
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def rollback(self):
+        db.session.rollback()
+
+    def close(self):
+        db.session.close()
+
