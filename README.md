@@ -89,7 +89,7 @@ Highlight folders:
 * `config.py` -- Stores configuration variables and instructions, separate from the main application code.
 
 
-Instructions
+Implimented
 -----
 
 * Built and ran local development.
