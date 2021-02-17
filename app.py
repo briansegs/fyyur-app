@@ -32,6 +32,7 @@ from models import(
 from flask_cors import CORS
 
 
+
 # App Config.
 
 def create_app(test_congig=None):
@@ -136,26 +137,25 @@ def create_app(test_congig=None):
         form = VenueForm()
         try:
             venue = Venue(
-            name=form.name.data,
-            genres=form.genres.data,
-            address=form.address.data,
-            city=form.city.data,
-            state=form.state.data,
-            phone=form.phone.data,
-            website=form.website.data,
-            facebook_link=form.facebook_link.data,
-            seeking_talent=form.seeking_talent.data,
-            seeking_description=form.seeking_description.data,
-            image_link=form.image_link.data,
-            )
-            db.session.add(venue)
-            db.session.commit()
+                name=form.name.data,
+                genres=form.genres.data,
+                address=form.address.data,
+                city=form.city.data,
+                state=form.state.data,
+                phone=form.phone.data,
+                website=form.website.data,
+                facebook_link=form.facebook_link.data,
+                seeking_talent=form.seeking_talent.data,
+                seeking_description=form.seeking_description.data,
+                image_link=form.image_link.data,
+                )
+            venue.insert()
             flash('Venue ' + form.name.data + ' was successfully listed!')
         except:
-            db.session.rollback()
+            venue.rollback()
             flash('An error occurred. Venue ' + form.name.data + ' could not be listed.')
         finally:
-            db.session.close()
+            venue.close()
         return render_template('pages/home.html')
 
     @app.route('/venues/<venue_id>', methods=['DELETE'])
@@ -163,14 +163,13 @@ def create_app(test_congig=None):
     # SQLAlchemy ORM to delete a record. Handle cases where the session commit could fail.
         try:
             venue = Venue.query.get(venue_id)
-            db.session.delete(venue)
-            db.session.commit()
+            venue.delete()
             flash(venue.name +  ' has been successfully deleted!')
         except:
-            db.session.rollback()
+            venue.rollback()
             flash('An error occurred. Venue ' + venue.name + ' could not be deleted.')
         finally:
-            db.session.close()
+            venue.close()
             return jsonify({'success': True})
 
     # Artists
