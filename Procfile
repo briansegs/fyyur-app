@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath backend fyyur-app-fsnd:app --preload
+web: gunicorn --pythonpath backend app:app --preload
