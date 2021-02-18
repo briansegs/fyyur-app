@@ -41,7 +41,7 @@ def create_app(test_congig=None):
     CORS(app)
     setup_db(app)
 
-    app.config['SECRET_KEY'] = 'any secret string'
+    app.config['SECRET_KEY'] = SECRET_KEY
 
     # Filters
 
