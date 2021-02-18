@@ -3,6 +3,7 @@ env/
 __pycache__/
 db-info-insert.py
 setup.sh
+fabfile.py
 
 # OS generated files #
 ######################
