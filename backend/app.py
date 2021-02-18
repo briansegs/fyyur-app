@@ -34,11 +34,7 @@ from flask_cors import CORS
 # App Config.
 
 def create_app(test_congig=None):
-    print("----PRINTING THIS----")
     template_dir = os.path.abspath('../frontend/templates')
-    print("++++++++ TEMPLATE_DIR+++++++++")
-    print(template_dir)
-    print("++++++++ TEMPLATE_DIR+++++++++")
     app = Flask(__name__, template_folder=template_dir)
     CORS(app)
     setup_db(app)
