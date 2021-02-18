@@ -31,6 +31,7 @@ from models import(
 from flask_cors import CORS
 
 
+
 # App Config.
 
 def create_app(test_congig=None):
@@ -39,6 +40,8 @@ def create_app(test_congig=None):
     app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
     CORS(app)
     setup_db(app)
+
+    app.config['SECRET_KEY'] = 'any secret string'
 
     # Filters
 
