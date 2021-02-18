@@ -22,7 +22,6 @@ from logging import (
 from flask_wtf import Form
 from forms import *
 from forms import VenueForm
-from flask_migrate import Migrate
 from models import(
   Venue,
   Artist,
@@ -32,11 +31,15 @@ from models import(
 from flask_cors import CORS
 
 
-
 # App Config.
 
 def create_app(test_congig=None):
-    app = Flask(__name__)
+    print("----PRINTING THIS----")
+    template_dir = os.path.abspath('../frontend/templates')
+    print("++++++++ TEMPLATE_DIR+++++++++")
+    print(template_dir)
+    print("++++++++ TEMPLATE_DIR+++++++++")
+    app = Flask(__name__, template_folder=template_dir)
     CORS(app)
     setup_db(app)
 
@@ -58,7 +61,6 @@ def create_app(test_congig=None):
     @app.route('/')
     def index():
         return render_template('pages/home.html')
-
 
     # Venues
 
@@ -314,17 +316,17 @@ def create_app(test_congig=None):
         form = ArtistForm()
         try:
             artist = Artist(
-            name=form.name.data,
-            genres=form.genres.data,
-            city=form.city.data,
-            state=form.state.data,
-            phone=form.phone.data,
-            website=form.website.data,
-            facebook_link=form.facebook_link.data,
-            seeking_venue=form.seeking_venue.data,
-            seeking_description=form.seeking_description.data,
-            image_link=form.image_link.data,
-            )
+                name=form.name.data,
+                genres=form.genres.data,
+                city=form.city.data,
+                state=form.state.data,
+                phone=form.phone.data,
+                website=form.website.data,
+                facebook_link=form.facebook_link.data,
+                seeking_venue=form.seeking_venue.data,
+                seeking_description=form.seeking_description.data,
+                image_link=form.image_link.data,
+                )
             db.session.add(artist)
             db.session.commit()
             flash('Artist ' + form.name.data + ' was successfully listed!')
@@ -384,10 +386,10 @@ def create_app(test_congig=None):
         form = ShowForm()
         try:
             show = Show(
-            venue_id=form.venue_id.data,
-            artist_id=form.artist_id.data,
-            start_time=form.start_time.data,
-            )
+                venue_id=form.venue_id.data,
+                artist_id=form.artist_id.data,
+                start_time=form.start_time.data,
+                )
             db.session.add(show)
             db.session.commit()
             flash('Show was successfully listed!')
