@@ -24,7 +24,7 @@ def setup_db(app, database_path=database_path):
     db.app = app
     db.init_app(app)
     moment = Moment(app)
-    # app.config.from_object('config')
+    app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
     db.create_all()
 
 

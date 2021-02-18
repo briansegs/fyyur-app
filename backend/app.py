@@ -41,8 +41,6 @@ def create_app(test_congig=None):
     CORS(app)
     setup_db(app)
 
-    app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
-
     # Filters
 
     def format_datetime(value, format='medium'):
