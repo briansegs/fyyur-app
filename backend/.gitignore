@@ -4,6 +4,7 @@ __pycache__/
 db-info-insert.py
 setup.sh
 fabfile.py
+config.py
 
 # OS generated files #
 ######################
