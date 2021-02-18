@@ -256,13 +256,13 @@ def create_app(test_congig=None):
             artist.facebook_link=form.facebook_link.data,
             # seeking_talent=form.seeking_talent.data,
             artist.image_link=form.image_link.data,
-            db.session.commit()
+            artist.update()
             flash('Artist ' + form.name.data + ' was successfully edited!')
         except:
-            db.session.rollback()
+            artist.rollback()
             flash('An error occurred. Artist ' + form.name.data + ' could not be edited.')
         finally:
-            db.session.close()
+            artist.close()
         return redirect(url_for('show_artist', artist_id=artist_id))
 
     @app.route('/venues/<int:venue_id>/edit', methods=['GET'])
@@ -290,13 +290,13 @@ def create_app(test_congig=None):
             # venue.seeking_talent=form.seeking_talent.data,
             # venue.seeking_description=form.seeking_description.data,
             venue.image_link=form.image_link.data,
-            db.session.commit()
+            venue.update()
             flash('Venue ' + form.name.data + ' was successfully edited!')
         except:
-            db.session.rollback()
+            venue.rollback()
             flash('An error occurred. venue ' + form.name.data + ' could not be edited.')
         finally:
-            db.session.close()
+            venue.close()
         return redirect(url_for('show_venue', venue_id=venue_id))
 
     # Create Artist
@@ -325,28 +325,26 @@ def create_app(test_congig=None):
                 seeking_description=form.seeking_description.data,
                 image_link=form.image_link.data,
                 )
-            db.session.add(artist)
-            db.session.commit()
+            artist.insert()
             flash('Artist ' + form.name.data + ' was successfully listed!')
         except:
-            db.session.rollback()
+            artist.rollback()
             flash('An error occurred. Artist ' + form.name.data + ' could not be listed.')
         finally:
-            db.session.close()
+            artist.close()
         return render_template('pages/home.html')
 
     @app.route('/artists/<int:artist_id>', methods=['DELETE'])
     def delete_artist(artist_id):
         try:
             artist = Artist.query.get(artist_id)
-            db.session.delete(artist)
-            db.session.commit()
+            artist.delete()
             flash(artist.name +  ' has been successfully deleted!')
         except:
-            db.session.rollback()
+            artist.rollback()
             flash('An error occurred. Artist ' + artist.name + ' could not be deleted.')
         finally:
-            db.session.close()
+            artist.close()
             return jsonify({'success': True})
 
     # Shows
@@ -388,14 +386,13 @@ def create_app(test_congig=None):
                 artist_id=form.artist_id.data,
                 start_time=form.start_time.data,
                 )
-            db.session.add(show)
-            db.session.commit()
+            show.insert()
             flash('Show was successfully listed!')
         except:
-            db.session.rollback()
+            show.rollback()
             flash('An error occurred. Show could not be listed.')
         finally:
-            db.session.close()
+            show.close()
         return render_template('pages/home.html')
 
     @app.errorhandler(404)
