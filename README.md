@@ -7,6 +7,8 @@ Fyyur is a musical venue and artist booking site that facilitates the discovery 
 
 For this project I built out the data models to power the API endpoints for the Fyyur site by connecting to a PostgreSQL database for storing, querying, and creating information about artists and venues on Fyyur.
 
+The app is live [fyyur-app](https://fyyur-app-fsnd.herokuapp.com/)
+
 ## Overview
 
 This app is a fully functioning site that is capable of doing the following using a PostgreSQL database:
@@ -60,11 +62,10 @@ npm install bootstrap@3
   │   ├── .gitignore
   │   ├── migrations
   │   ├── app.py *** the main driver of the app. Includes my SQLAlchemy models.
-  │   |                  "python3 app.py" to run after installing dependences
-  │   ├── config.py *** Database URLs, CSRF generation, etc
+  │   |                  "python3 app.py" to run after installing dependences.
   │   ├── error.log
   │   ├── forms.py *** My forms
-  │   └── models.py
+  │   └── models.py *** Sets up the Database and Models
   └──frontend
       ├── static
       │   ├── css
@@ -92,7 +93,6 @@ Highlight folders:
 * `frontend/templates/forms` -- Defines the forms used to create new artists, shows, and venues.
 * `backend/app.py` -- Defines routes that match the user’s URL, and controllers which handle data and renders views to the user.
 * `backend/models.py` -- Defines the data models that set up the database tables.
-* `config.py` -- Stores configuration variables and instructions, separate from the main application code.
 
 
 Implimented
@@ -100,7 +100,7 @@ Implimented
 
 * Built and ran local development.
 
-  1. Connected to a database in `config.py`.
+  1. Connected to a database in `backend/models.py`.
   2. Using SQLAlchemy, I set up normalized models for the objects supported in my web app in `backend/models.py`.
   3. Implemented form submissions for creating new Venues, Artists, and Shows. There are proper constraints, powering the `/create` endpoints that serve the create form templates.
   4. Implemented the controllers for listing venues, artists, and shows.
@@ -121,7 +121,7 @@ Here are some things I would like to add in the future:
 ## Development Setup
 1. **Download the project starter code locally**
 ```
-git clone https://github.com/briansegs/fyyur-app
+git clone https://github.com/briansegs/fyyur-app-fsnd
 ```
 
 2. **Create an empty repository in your Github account online. To change the remote repository path in your local repository, use the commands below:**
@@ -129,13 +129,13 @@ git clone https://github.com/briansegs/fyyur-app
 git remote -v
 git remote remove origin
 git remote add origin <https://github.com/<USERNAME>/<REPO_NAME>.git>
-git branch -M master
+git branch -M main
 ```
 Once you have finished editing your code, you can push the local repository to your Github account using the following commands.
 ```
 git add . --all
 git commit -m "your comment"
-git push -u origin master
+git push -u origin main
 ```
 
 3. **Initialize and activate a virtualenv using:**
@@ -153,13 +153,28 @@ source env/Scripts/activate
 pip install -r requirements.txt
 ```
 
-5. **Run the development server:**
+5. **Create a new Database:**
 ```
-export FLASK_APP=app
-export FLASK_ENV=development # enables debug mode
-python3 app.py
+createdb fyyurapp
 ```
 
-6. **Verify on the Browser**<br>
+6. **Environment Configuration:**<br>
+In the backend directory, use `touch setup.sh` to create your setup file and set up all of your environment variables in that file.
+Your file should look like this:
+```
+export DATABASE_URL='postgresql://name:password@localhost:5432/fyyurapp'
+export SECRET_KEY='some random string'
+export FLASK_APP='app'
+export FLASK_ENV='development'
+```
+
+7. **Export Environment Configuration and run server:**<br>
+In the backend directory...
+```
+source setup.sh
+flask run
+```
+
+8. **Verify on the Browser**<br>
 Navigate to project homepage [http://127.0.0.1:5000/](http://127.0.0.1:5000/) or [http://localhost:5000](http://localhost:5000)
 
