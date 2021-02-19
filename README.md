@@ -5,9 +5,9 @@
 
 Fyyur is a musical venue and artist booking site that facilitates the discovery and bookings of shows between local performing artists and venues. This site lets you list new artists and venues, discover them, and list shows with artists as a venue owner.
 
-For this project I built out the data models to power the API endpoints for the Fyyur site by connecting to a PostgreSQL database for storing, querying, and creating information about artists and venues on Fyyur.
+For this project, I built out the data models to power the API endpoints for the Fyyur site by connecting to a PostgreSQL database for storing, querying, and creating information about artists and venues on Fyyur.
 
-The app is live [fyyur-app](https://fyyur-app-fsnd.herokuapp.com/)
+The app is live [Fyyur-app](https://fyyur-app-fsnd.herokuapp.com/)
 
 ## Overview
 
@@ -88,8 +88,8 @@ Overall:
 
 
 Highlight folders:
-* `frontend/templates/pages` -- Defines the pages that are rendered to the site. These templates render views based on data passed into the template’s view, in the controllers defined in `app.py`. These pages successfully represent the data to the user.
-* `frontendend/templates/layouts` -- Defines the layout that a page can be contained in to define footer and header code for a given page.
+* `frontend/templates/pages` -- Defines the pages that are rendered to the site. These templates render views based on data passed into the template’s view, in the controllers defined in `backend/app.py`. These pages successfully represent the data to the user.
+* `frontend/templates/layouts` -- Defines the layout that a page can be contained in to define footer and header code for a given page.
 * `frontend/templates/forms` -- Defines the forms used to create new artists, shows, and venues.
 * `backend/app.py` -- Defines routes that match the user’s URL, and controllers which handle data and renders views to the user.
 * `backend/models.py` -- Defines the data models that set up the database tables.
@@ -158,7 +158,7 @@ pip install -r requirements.txt
 createdb fyyurapp
 ```
 
-6. **Environment Configuration:**<br>
+6. **Environment Configurations:**<br>
 In the backend directory, use `touch setup.sh` to create your setup file and set up all of your environment variables in that file.
 Your file should look like this:
 ```
@@ -168,7 +168,7 @@ export FLASK_APP='app'
 export FLASK_ENV='development'
 ```
 
-7. **Export Environment Configuration and run server:**<br>
+7. **Export Environment Configurations and run server:**<br>
 In the backend directory...
 ```
 source setup.sh
