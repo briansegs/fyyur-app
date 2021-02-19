@@ -53,39 +53,45 @@ npm install bootstrap@3
 
   ```sh
   ├── README.md
-  ├── app.py *** the main driver of the app. Includes my SQLAlchemy models.
-                    "python3 app.py" to run after installing dependences
-  ├── config.py *** Database URLs, CSRF generation, etc
-  ├── error.log
-  ├── forms.py *** My forms
   ├── requirements.txt *** The dependencies you need to install with "pip3 install -r requirements.txt"
-  ├── models.py
-  ├── static
-  │   ├── css
-  │   ├── font
-  │   ├── ico
-  │   ├── img
-  │   └── js
-  └── templates
-      ├── errors
-      ├── forms
-      ├── layouts
-      └── pages
+  ├── Procfile
+  ├── backend
+  │   ├── manage.py
+  │   ├── .gitignore
+  │   ├── migrations
+  │   ├── app.py *** the main driver of the app. Includes my SQLAlchemy models.
+  │   |                  "python3 app.py" to run after installing dependences
+  │   ├── config.py *** Database URLs, CSRF generation, etc
+  │   ├── error.log
+  │   ├── forms.py *** My forms
+  │   └── models.py
+  └──frontend
+      ├── static
+      │   ├── css
+      │   ├── font
+      │   ├── ico
+      │   ├── img
+      │   └── js
+      └── templates
+          ├── errors
+          ├── forms
+          ├── layouts
+          └── pages
   ```
 
 Overall:
-* Models are located in `models.py`.
-* Controllers are also located in `app.py`.
-* The web frontend is located in `templates/`, which builds static assets deployed to the web server at `static/`.
-* Web forms for creating data are located in `form.py`
+* Models are located in `backend/models.py`.
+* Controllers are also located in `backend/app.py`.
+* The web frontend is located in `frontend/templates/`, which builds static assets deployed to the web server at `frontend/static/`.
+* Web forms for creating data are located in `backend/form.py`
 
 
 Highlight folders:
-* `templates/pages` -- Defines the pages that are rendered to the site. These templates render views based on data passed into the template’s view, in the controllers defined in `app.py`. These pages successfully represent the data to the user.
-* `templates/layouts` -- Defines the layout that a page can be contained in to define footer and header code for a given page.
-* `templates/forms` -- Defines the forms used to create new artists, shows, and venues.
-* `app.py` -- Defines routes that match the user’s URL, and controllers which handle data and renders views to the user.
-* `models.py` -- Defines the data models that set up the database tables.
+* `frontend/templates/pages` -- Defines the pages that are rendered to the site. These templates render views based on data passed into the template’s view, in the controllers defined in `app.py`. These pages successfully represent the data to the user.
+* `frontendend/templates/layouts` -- Defines the layout that a page can be contained in to define footer and header code for a given page.
+* `frontend/templates/forms` -- Defines the forms used to create new artists, shows, and venues.
+* `backend/app.py` -- Defines routes that match the user’s URL, and controllers which handle data and renders views to the user.
+* `backend/models.py` -- Defines the data models that set up the database tables.
 * `config.py` -- Stores configuration variables and instructions, separate from the main application code.
 
 
@@ -95,7 +101,7 @@ Implimented
 * Built and ran local development.
 
   1. Connected to a database in `config.py`.
-  2. Using SQLAlchemy, I set up normalized models for the objects supported in my web app in `models.py`.
+  2. Using SQLAlchemy, I set up normalized models for the objects supported in my web app in `backend/models.py`.
   3. Implemented form submissions for creating new Venues, Artists, and Shows. There are proper constraints, powering the `/create` endpoints that serve the create form templates.
   4. Implemented the controllers for listing venues, artists, and shows.
   5. Implemented search, powering the `/search` endpoints that serve the application's search functionalities.
