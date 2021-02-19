@@ -7,7 +7,7 @@ Fyyur is a musical venue and artist booking site that facilitates the discovery 
 
 For this project, I built out the data models to power the API endpoints for the Fyyur site by connecting to a PostgreSQL database for storing, querying, and creating information about artists and venues on Fyyur.
 
-The app is live [Fyyur-app](https://fyyur-app-fsnd.herokuapp.com/)
+The app has been deployed to Heroku -> [Fyyur-app](https://fyyur-app-fsnd.herokuapp.com/)
 
 ## Overview
 
@@ -107,6 +107,7 @@ Implimented
   5. Implemented search, powering the `/search` endpoints that serve the application's search functionalities.
   6. Served venue and artist detail pages, powering the `<venue|artist>/<id>` endpoints that power the detail pages.
 
+* Deployed fyyur-app to Heroku.
 
 
 ##### Wishlist For later
