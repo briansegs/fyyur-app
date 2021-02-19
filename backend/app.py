@@ -381,17 +381,13 @@ def create_app(test_congig=None):
     # inserts form data as a new Show record in the db
         form = ShowForm()
         try:
-            print('1')
             show = Show(
                 venue_id=form.venue_id.data,
                 artist_id=form.artist_id.data,
                 start_time=form.start_time.data,
                 )
-            print('2')
             show.insert()
-            print('3')
             flash('Show was successfully listed!')
-            print('4')
         except:
             show.rollback()
             flash('An error occurred. Show could not be listed.')
